@@ -10,7 +10,7 @@ export default function PreviewPage({ navigation }) {
     function closePreview(){
         dispatch({type:'CLOSE_PREVIEW'});
         dispatch({type:'DELETE_PICTURE'});
-        navigation.navigate('Cam');
+        navigation.navigate('ImageSelector');
     }
 
     function savePhoto(){
