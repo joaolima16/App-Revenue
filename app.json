@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "tudoDoce_App",
-    "slug": "tudoDoce_App",
+    "name": "projeto-receita",
+    "slug": "projeto-receita",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
