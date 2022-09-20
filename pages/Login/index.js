@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { View, Text, TextInput,TouchableOpacity, TouchableHighlight } from 'react-native';
 import { useState } from 'react';
+import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { styles } from './styles';
 
 export default function Login({navigation}){
-    const [Email,SetEmail] = useState();
-    const [Password,SetPassword] = useState();
+    const [Email,SetEmail] = useState('');
+    const [Password,SetPassword] = useState('');
 
     function SignInUser(){        
-        if (!Email || !Password) {
-            alert(!Email ? 'Campo de Email vazio' : 'Campo de Senha vazio')
+        if (Email == '' || Password == '') {
+            Alert(Email == '' ? 'Campo de Email vazio' : 'Campo de Senha vazio')
             return;
         }
         const auth = getAuth();
@@ -19,7 +19,7 @@ export default function Login({navigation}){
             console.log(user);
             navigation.navigate('Home');
         })
-        .catch((err)=>{ alert("Usuário não cadastrado ou ocorreu algum erro no banco: " + err)})
+        .catch((err)=>{ Alert("Usuário não cadastrado ou ocorreu algum erro no banco: " + err)})
     }
 
     return(
@@ -27,6 +27,8 @@ export default function Login({navigation}){
         <TextInput placeholder='Email' 
             style={styles.inputBox}
             onChangeText={(value)=>SetEmail(value)}
+            autoCapitalize="none"
+            autoCorrect={false}
         />
         <TextInput placeholder='Senha'
             style={styles.inputBox} 

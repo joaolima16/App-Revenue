@@ -1,60 +1,55 @@
-import * as React from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert, Modal, FlatList, Image} from 'react-native';
+import React, { useState } from 'react';
+import { FlatList, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { useDispatch } from 'react-redux';
 import DropdownComponent from '../../components/Dropdown';
+import ModalInformation from './modal';
 import { styles } from './styles';
 
-const NewRecipes = () => {
-    // const [modalVisible, setModalVisible] = useState(true);
+const ingredients = {};
+
+export default function NewRecipes({navigation}){
+    const [modalVisible, setModalVisible] = useState(true);
+    const [dataRecipe, setDataRecipe] = useState({});
+    const [category, setCategory] = useState(null);
+    const [inputCounter, setInputCounter] = useState([]);
+    const dispatch = useDispatch();
+
+    function newIngredient(){
+        setInputCounter([...inputCounter,{key:inputCounter.length}]);
+    }
     return(
         <View style={styles.container}>
-            {/* <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                Alert.alert("Modal has been closed.");
-                setModalVisible(!modalVisible);
-                }}
-            >
-                <View style={styles.centeredView}>
-                <View style={styles.modalView}>
-                    <Text style={styles.titleModal}>Instruções</Text>
-                    <FlatList style={styles.textStyle}
-                    data={[
-                        {key: '1. Para assados, coloque sempre o tempo e a temperatura do forno;'},
-                        {key: '2. Para bolos não esqueça de colocar o tipo/ tamanho da forma;'},
-                        {key: '3. Informe sempre o tempo de cozimento;'},
-                        {key: '4. Coloque as medidas de maneira detalhada: tipo de colheres (chá, café, sopa) e xícaras (chá, café, etc.), por exemplo;'},
-                        {key: '5. Coloque sempre o rendimento e a validade de cada receita. '},
-                    
-                    ]}
-                    renderItem={({item}) => <Text>{item.key}</Text>}
-                    />
-                    
-                </View>
-                    <TouchableOpacity
-                    onPress={() => setModalVisible(!modalVisible)}
-                    >
-                    <Image style={styles.buttonClose} source={require('../../assets/x-regular-24.png')}/>
-                    </TouchableOpacity>
-                </View>
-            </Modal> */}
-
+            <ModalInformation isOpen={modalVisible} setIsOpen={setModalVisible}/>
             <Text style={styles.title}>Adicione sua receita</Text>
             <Text style={styles.subtitle}>informações</Text>
-            <TextInput style={styles.inputs} placeholder={'Título'}></TextInput>
-            <DropdownComponent />
+            <TextInput style={styles.inputs} placeholder='Título' onChangeText={(text)=>setDataRecipe({...dataRecipe, title:text})}/>
+            <DropdownComponent state={category} setState={setCategory} />
             <View style={styles.boxcampos}>
-                <TextInput style={styles.inputs} placeholder={'Minutos'}></TextInput>
-                <TextInput style={styles.inputs} placeholder={'Porções'}></TextInput>
+                <TextInput style={styles.inputs} placeholder='Minutos' onChangeText={(text)=>setDataRecipe({...dataRecipe, minutes:text})}/>
+                <TextInput style={styles.inputs} placeholder='Porções' onChangeText={(text)=>setDataRecipe({...dataRecipe, portions:text})}/>
             </View>
             <Text style={styles.subtitle}>Adicionar ingredientes</Text>
-            <TouchableOpacity style={styles.addbtn}>
+            <FlatList data={inputCounter}
+                renderItem={({item})=>(
+                    <TextInput placeholder="Nome do ingrediente"
+                        style={styles.inputs}
+                        onChangeText={(text)=>{ 
+                            ingredients[item.key]=text;
+                        }}
+                    />
+                )}
+            />
+            <TouchableOpacity style={styles.addbtn} onPress={()=>newIngredient()}>
                 <Text style={styles.iconbtn}>+</Text>
             </TouchableOpacity>
             <Text style={styles.subtitle}>Preparo</Text>
-            <TextInput style={styles.inputPreparo} placeholder={'Categoria'}></TextInput>
-            <TouchableOpacity style={styles.btnProximo}>
+            <TextInput style={styles.inputPreparo} placeholder='Descreva  modo de preparo' onChangeText={(text)=>setDataRecipe({...dataRecipe, steps:text})}/>
+            <TouchableOpacity style={styles.btnProximo}
+                onPress={()=>{
+                    dispatch({type:"ADD_DATA_INSERT", data:{...dataRecipe, ingredients, category}});
+                    navigation.navigate('ImageSelector');
+                }}
+            >
                 <Text style={styles.iconbtn}>Próximo</Text>
             </TouchableOpacity>
         </View>

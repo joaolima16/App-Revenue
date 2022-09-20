@@ -13,6 +13,7 @@ import ImageSelectorPage from './pages/ImageSelectorPage';
 import PreviewPage from './pages/PreviewPage';
 import store from './store';
 import Register from './pages/Register';
+import NewRecipes from './pages/NewRecipes';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -55,14 +56,15 @@ export default function App() {
   
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      <NavigationContainer ref={NavigationRef}>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Register" component={Register} />
-          <Stack.Screen name="Home" component={HomePage} />
+          <Stack.Screen name="NewRecipe"component={NewRecipes}/>
           <Stack.Screen name="ImageSelector" component={ImageSelectorPage} />
           <Stack.Screen name="Cam" component={CamPage} />
           <Stack.Screen name="Preview" component={PreviewPage} />
+          <Stack.Screen name="Home" component={HomePage} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

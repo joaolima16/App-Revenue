@@ -17,7 +17,6 @@ export const styles = StyleSheet.create({
         textDecorationLine: 'underline',
         textDecorationColor: '#F5B3C7',
         fontSize: 16,
-
     },
     heartLottie: {
         width: 400,

@@ -61,5 +61,14 @@ export const styles = StyleSheet.create({
         height:50,
         width:'100%',
         backgroundColor:'#feafc8',
+    },
+    btnBack: {
+        borderRadius: 50,
+        backgroundColor: '#fff',
+        width: 45,
+        height: 45,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginRight: 15
     }
 });

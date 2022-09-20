@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Image, SafeAreaView, Text, View} from "react-native";
+import { Image, SafeAreaView, Text, TouchableOpacity, View} from "react-native";
 import { styles } from './styles';
 import * as ImagePicker from 'expo-image-picker'; 
 import Button from "../../components/Button";
@@ -40,7 +40,13 @@ export default function ImageSelectorPage({navigation}){
     function Aplication(){
         return(
             <>
-                <View style={styles.header}/>
+                <View style={styles.header}>
+                    <TouchableOpacity style={styles.btnBack} onPress={()=>navigation.navigate('Home')}>
+                        <Text>
+                            {'<'}
+                        </Text>
+                    </TouchableOpacity>
+                </View>
                 <Text style={styles.title}>selecione uma imagem</Text>
                 {!states.Picture.value?
                 <View style={styles.imageWrapper}>
