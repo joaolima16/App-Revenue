@@ -25,57 +25,32 @@ export const styles = StyleSheet.create({
     inputs:{
         margin: 20,
         padding: 15,
-<<<<<<< HEAD
-        backgroundColor: '#F7F7F7',
-        textAlign: 'center',
-
-=======
         borderRadius:5,
         backgroundColor: '#e6e6e6',
         textAlign: 'center',
         width:100
->>>>>>> main
     }, 
 
     inputPreparo:{
         margin: 20,
         width: 350,
         height: 300,
-<<<<<<< HEAD
-        backgroundColor: '#F7F7F7',
-        textAlign: 'center',
-        marginLeft: 15,
-
-    }, 
-
-=======
         backgroundColor: '#e6e6e6',
         textAlign: 'center',
         marginLeft: 15,
     }, 
->>>>>>> main
     boxcampos:{
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         margin: 5,
-<<<<<<< HEAD
-        // padding: 30
     },
-
-=======
-    },
->>>>>>> main
     addbtn:{
         backgroundColor:'#FFCBDB',
         margin: 15,
         padding: 5,
-<<<<<<< HEAD
-        borderRadius: '50%',
-=======
         borderRadius: 100,
->>>>>>> main
         width: 40,
         height: 40,
         alignItems: 'center',
@@ -93,11 +68,6 @@ export const styles = StyleSheet.create({
         margin: 50,
         borderRadius: 8,
     },
-<<<<<<< HEAD
-
-
-=======
->>>>>>> main
     modalView: {
         backgroundColor: '#F7F7F7',
         margin: 'auto',
@@ -106,11 +76,6 @@ export const styles = StyleSheet.create({
         height: 500,
         justifyContent: 'center',
         alignItems: 'center',
-<<<<<<< HEAD
-        
-    
-=======
->>>>>>> main
     },
     titleModal: {
         marginLeft: 10,
@@ -130,10 +95,6 @@ export const styles = StyleSheet.create({
     buttonClose: {
         width: 50,
         height: 50,
-<<<<<<< HEAD
-        margin: 'auto',
-=======
->>>>>>> main
     },
     textStyle: {
         margin: 20,

@@ -8,11 +8,7 @@ export default function ModalInformation({isOpen, setIsOpen}){
             visible={isOpen}
             onRequestClose={() => setIsOpen(!isOpen)}
         >
-<<<<<<< HEAD
-            <View style={styles.centeredView}>
-=======
             <View style={styles.container}>
->>>>>>> main
                 <View style={styles.modalView}>
                     <Text style={styles.titleModal}>Instruções</Text>
                     <FlatList style={styles.textStyle}

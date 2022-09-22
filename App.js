@@ -4,7 +4,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { Provider } from 'react-redux';
-import Categorias from "./pages/Categorias";
+import Categories from "./pages/Categories";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Login  from './pages/Login';
@@ -14,10 +14,8 @@ import PreviewPage from './pages/PreviewPage';
 import store from './store';
 import Register from './pages/Register';
 import NewRecipes from './pages/NewRecipes';
-<<<<<<< HEAD
-=======
+import ReciperViewer from './pages/RecipeViewer';
 import Confirmation from './pages/Confirmation';
->>>>>>> main
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -51,7 +49,7 @@ export default function App() {
                 />),
             }}
             name="Categorias"
-            component={Categorias}
+            component={Categories}
           />
         </Tab.Navigator>
       </>
@@ -70,6 +68,7 @@ export default function App() {
           <Stack.Screen name="Preview" component={PreviewPage} />
           <Stack.Screen name="Home" component={HomePage} />
           <Stack.Screen name="Confirmation" component={Confirmation} />
+          <Stack.Screen name="Recipe" component={ReciperViewer} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

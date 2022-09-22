@@ -49,7 +49,12 @@ export default function NewRecipes({navigation}){
                     <Text style={styles.iconbtn}>+</Text>
                 </TouchableOpacity>
                 <Text style={styles.subtitle}>Preparo</Text>
-                <TextInput style={styles.inputPreparo} placeholder='Descreva  modo de preparo' onChangeText={(text)=>setDataRecipe({...dataRecipe, steps:text})}/>
+                <TextInput style={styles.inputPreparo} 
+                    multiline={true}
+                    numberOfLines={4}
+                    placeholder='Descreva  modo de preparo' 
+                    onChangeText={(text)=>setDataRecipe({...dataRecipe, steps:text})}
+                />
                 <TouchableOpacity style={styles.btnProximo}
                     onPress={()=>AddingRecipe()}
                 >
