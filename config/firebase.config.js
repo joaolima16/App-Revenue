@@ -20,4 +20,4 @@ if(!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
-export default {app, firebase, db, auth};
+export {app, firebase, db, auth};

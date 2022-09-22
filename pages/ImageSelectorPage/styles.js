@@ -70,5 +70,16 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginRight: 15
+<<<<<<< HEAD
+=======
+    },
+    btnGo:{
+        backgroundColor:'#feafc8',
+        borderRadius:5,
+        alignItems:'center',
+        justifyContent:'center',
+        width:80,
+        height:40,
+>>>>>>> main
     }
 });

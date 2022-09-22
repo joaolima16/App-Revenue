@@ -25,9 +25,8 @@ export default function PreviewPage({ navigation }) {
             xhr.open('GET',states.Picture.value,true);
             xhr.send(null);
         });
-        const nameUser = "ChrisTest"; // Trocar pelo usuário logado
         const timestamp = new Date().getTime();
-        const nameImage = `${nameUser}/${timestamp}` //padrão: nomeUsuario_data(Timestamp)
+        const nameImage = `RecipesImages/${timestamp}` //padrão: nomeUsuario_data(Timestamp)
         const reference = firebase.storage().ref().child(`images/${nameImage}`);
         const snapshot = await reference.put(blob);
         blob.close();
@@ -42,6 +41,7 @@ export default function PreviewPage({ navigation }) {
                 const data = {...states.DB_Insert.value, urlImage};
                 dispatch({type:"ADD_DATA_INSERT", data});
                 dispatch({type:'DELETE_PICTURE'});
+                navigation.navigate('Confirmation');
             })()
         });
     };
