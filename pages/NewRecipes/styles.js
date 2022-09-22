@@ -25,35 +25,32 @@ export const styles = StyleSheet.create({
     inputs:{
         margin: 20,
         padding: 15,
-        backgroundColor: '#F7F7F7',
+        borderRadius:5,
+        backgroundColor: '#e6e6e6',
         textAlign: 'center',
-
+        width:100
     }, 
 
     inputPreparo:{
         margin: 20,
         width: 350,
         height: 300,
-        backgroundColor: '#F7F7F7',
+        backgroundColor: '#e6e6e6',
         textAlign: 'center',
         marginLeft: 15,
-
     }, 
-
     boxcampos:{
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         margin: 5,
-        // padding: 30
     },
-
     addbtn:{
         backgroundColor:'#FFCBDB',
         margin: 15,
         padding: 5,
-        borderRadius: '50%',
+        borderRadius: 100,
         width: 40,
         height: 40,
         alignItems: 'center',
@@ -71,8 +68,6 @@ export const styles = StyleSheet.create({
         margin: 50,
         borderRadius: 8,
     },
-
-
     modalView: {
         backgroundColor: '#F7F7F7',
         margin: 'auto',
@@ -81,8 +76,6 @@ export const styles = StyleSheet.create({
         height: 500,
         justifyContent: 'center',
         alignItems: 'center',
-        
-    
     },
     titleModal: {
         marginLeft: 10,
@@ -102,7 +95,6 @@ export const styles = StyleSheet.create({
     buttonClose: {
         width: 50,
         height: 50,
-        margin: 'auto',
     },
     textStyle: {
         margin: 20,

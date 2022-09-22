@@ -7,7 +7,7 @@ import { styles } from './styles';
 export default function Login({navigation}){
     const [Email,SetEmail] = useState('');
     const [Password,SetPassword] = useState('');
-
+    const [error, setError] = useState({status:false, msg:''});
     function SignInUser(){        
         if (Email == '' || Password == '') {
             Alert(Email == '' ? 'Campo de Email vazio' : 'Campo de Senha vazio')
@@ -19,7 +19,7 @@ export default function Login({navigation}){
             console.log(user);
             navigation.navigate('Home');
         })
-        .catch((err)=>{ Alert("Usuário não cadastrado ou ocorreu algum erro no banco: " + err)})
+        .catch((err)=>setError({status:true, msg:'Usuário ou senha incorretos!'}))
     }
 
     return(
@@ -44,6 +44,7 @@ export default function Login({navigation}){
         >
             <Text style={styles.textBotaoCad}>Cadastro</Text>
         </TouchableOpacity>
+        {error.status && <Text>{error.msg}</Text>}
       </View>
     );
 };

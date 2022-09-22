@@ -4,6 +4,7 @@ import { styles } from './styles';
 import * as ImagePicker from 'expo-image-picker'; 
 import Button from "../../components/Button";
 import { useDispatch, useSelector } from 'react-redux';
+import { firebase } from '../../config/firebase.config';
 
 export default function ImageSelectorPage({navigation}){
     const [permission, setPermission] = useState(false);
@@ -37,6 +38,32 @@ export default function ImageSelectorPage({navigation}){
         navigation.navigate('Cam')
     }
 
+    async function uploadImage(){
+        const blob = await new Promise((resolve,reject)=>{
+            const xhr = new XMLHttpRequest();
+            xhr.onload = ()=>{resolve(xhr.response)};
+            xhr.onerror = ()=>{reject(new TypeError("Falha ao conectar"))};
+            xhr.responseType = 'blob';
+            xhr.open('GET',states.Picture.value,true);
+            xhr.send(null);
+        });
+        const timestamp = new Date().getTime();
+        const nameImage = `RecipesImages/${timestamp}` //padrão: nomeUsuario_data(Timestamp)
+        const reference = firebase.storage().ref().child(`images/${nameImage}`);
+        await reference.put(blob);
+        return await reference.getDownloadURL();
+    };
+
+    function saveGalleryImage(){
+        (async ()=>{
+            const urlImage = await uploadImage();
+            const data = {...states.DB_Insert.value, urlImage};
+            dispatch({type:"ADD_DATA_INSERT", data});
+            dispatch({type:'DELETE_PICTURE'});
+            navigation.navigate('Confirmation');
+        })()  
+    }
+
     function Aplication(){
         return(
             <>
@@ -66,6 +93,12 @@ export default function ImageSelectorPage({navigation}){
                         styleText={styles.galleryBtnText}
                         textBtn="Galeria"
                     />
+                    {states.Picture.value != '' && 
+                    <Button functionExec={saveGalleryImage}
+                        styleBtn={styles.btnGo}
+                        styleText={styles.cameraBtnText}
+                        textBtn="Ir"
+                    /> }
                 </View>
             </>
         );

@@ -14,6 +14,7 @@ import PreviewPage from './pages/PreviewPage';
 import store from './store';
 import Register from './pages/Register';
 import NewRecipes from './pages/NewRecipes';
+import Confirmation from './pages/Confirmation';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -65,6 +66,7 @@ export default function App() {
           <Stack.Screen name="Cam" component={CamPage} />
           <Stack.Screen name="Preview" component={PreviewPage} />
           <Stack.Screen name="Home" component={HomePage} />
+          <Stack.Screen name="Confirmation" component={Confirmation} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
