@@ -14,7 +14,7 @@ export default function Home({navigation}) {
     RecipesRef.forEach((index) =>console.log(index.data()))
   };
 
-  useEffect(() => getRecipes(), []);
+  useEffect(() => {getRecipes()}, []);
   
   return(
     <Card> 
@@ -28,7 +28,15 @@ export default function Home({navigation}) {
           style={styles.btnVerReceita}
           onPress={()=>{
             // add data;
-            // dispatch({type:'ADD_DATA_VIEWER', data:});
+            const objTeste = {
+              image:'https://i.pinimg.com/736x/ba/92/7f/ba927ff34cd961ce2c184d47e8ead9f6.jpg',
+              title:'Teste de Receitas',
+              portions:1,
+              minutes:3.14,
+              ingredients:['love','care','josias'],
+              steps:'1.nothing'
+            };
+            dispatch({type:'ADD_DATA_VIEWER', data:objTeste});
             navigation.navigate('Recipe')
           }}
         >

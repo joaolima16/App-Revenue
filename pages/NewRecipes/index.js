@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import DropdownComponent from '../../components/Dropdown';
 import ModalInformation from './modal';
 import { styles } from './styles';
-const ingredients = {};
+const ingredients = [];
 
 export default function NewRecipes({navigation}){
     const [modalVisible, setModalVisible] = useState(true);
@@ -40,7 +40,7 @@ export default function NewRecipes({navigation}){
                         <TextInput placeholder="Nome do ingrediente"
                             style={{...styles.inputs, width:180}}
                             onChangeText={(text)=>{ 
-                                ingredients[item.key]=text;
+                                ingredients.push(text);
                             }}
                         />
                     )}
