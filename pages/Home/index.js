@@ -13,8 +13,10 @@ export default function Home({navigation}) {
   async function getRecipes() {
     const RecipesRef = await getDocs(collection(db, "receitas"));
     const datas = [];
-    RecipesRef.forEach((item,index)=>{
-      datas.push({...item.data(), index});
+    var index = 0;
+    RecipesRef.forEach((item)=>{
+      datas.push({...item.data(), id:item.id, index});
+      index++;
     });
     setDataRecipes(datas);
     console.log(datas)

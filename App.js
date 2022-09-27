@@ -14,7 +14,7 @@ import PreviewPage from './pages/PreviewPage';
 import store from './store';
 import Register from './pages/Register';
 import NewRecipes from './pages/NewRecipes';
-import ReciperViewer from './pages/RecipeViewer';
+import RecipeViewer from './pages/RecipeViewer';
 import Confirmation from './pages/Confirmation';
 
 export default function App() {
@@ -68,7 +68,7 @@ export default function App() {
           <Stack.Screen name="Preview" component={PreviewPage} />
           <Stack.Screen name="Home" component={HomePage} />
           <Stack.Screen name="Confirmation" component={Confirmation} />
-          <Stack.Screen name="Recipe" component={ReciperViewer} />
+          <Stack.Screen name="Recipe" component={RecipeViewer} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
