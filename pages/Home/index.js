@@ -4,11 +4,12 @@ import { FlatList, TouchableOpacity, View } from 'react-native';
 import { Card, Text } from 'react-native-elements';
 import { styles } from './styles';
 import { db } from '../../config/firebase.config';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function Home({navigation}) {
   const [dataRecipes, setDataRecipes] = useState([]);
   const dispatch = useDispatch();
+  const states = useSelector((state)=>state);
   
   async function getRecipes() {
     const RecipesRef = await getDocs(collection(db, "receitas"));
@@ -22,7 +23,7 @@ export default function Home({navigation}) {
     console.log(datas)
   };
 
-  useEffect(()=>{getRecipes()}, []);
+  useEffect(()=>{getRecipes()}, [states.RecipeViewerData.value]);
   
   return(
     <FlatList
@@ -38,15 +39,6 @@ export default function Home({navigation}) {
             <TouchableOpacity 
               style={styles.btnVerReceita}
               onPress={()=>{
-                // add data;
-                const objTeste = {
-                  image:'https://i.pinimg.com/736x/ba/92/7f/ba927ff34cd961ce2c184d47e8ead9f6.jpg',
-                  title:'Teste de Receitas',
-                  portions:1,
-                  minutes:3.14,
-                  ingredients:['love','care','josias'],
-                  steps:'1.nothing'
-                };
                 dispatch({type:'ADD_DATA_VIEWER', data:item});
                 navigation.navigate('Recipe')
               }}

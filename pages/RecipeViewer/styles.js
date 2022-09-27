@@ -85,16 +85,18 @@ export const styles = StyleSheet.create({
   },
   buttonsEdit: {
     backgroundColor: '#FEAFC8',
-    textAlign: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    color: '#fff',
-    fontSize: 25,
-    fontWeight: 'bold',
     margin: 10,
     width: 250,
     height: 50,
     borderRadius: 10
+  },
+  textBtnEdit:{
+    color: '#fff',
+    fontSize: 25,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   buttonClose: {
     width: 50,

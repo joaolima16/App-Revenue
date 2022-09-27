@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { FlatList, Image, Modal, StatusBar, Text, TouchableOpacity, View } from 'react-native';
 import { ScrollView } from 'react-native-web';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { styles } from './styles';
 import { doc, deleteDoc } from 'firebase/firestore';
 import { db } from '../../config/firebase.config';
 
 export default function RecipeViewer({navigation}){
   const states = useSelector((state)=>state);
+  const dispatch = useDispatch();
   const [modalVisible, setModalVisible] = useState(false);
   
   function aplication(){
@@ -16,6 +17,7 @@ export default function RecipeViewer({navigation}){
     async function exclude(){
       await deleteDoc(doc(db, "receitas", data.id));
     }
+
     return(
       <>
         <Modal animationType="slide"
@@ -27,15 +29,16 @@ export default function RecipeViewer({navigation}){
             <View>
               <Text style={styles.titleModal}>Opções</Text>
               <TouchableOpacity style={styles.buttonsEdit}>
-                <Text>
+                <Text style={styles.textBtnEdit}>
                   Editar receita
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.buttonsEdit} onPress={()=>{
                 (async()=>exclude())()
+                dispatch({type:"REMOVE_DATA_VIEWER"});
                 navigation.navigate('Home');
               }}>
-                <Text>
+                <Text style={styles.textBtnEdit}>
                   Excluir receita
                 </Text>
               </TouchableOpacity>
