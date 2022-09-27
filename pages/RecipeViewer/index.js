@@ -32,7 +32,7 @@ export default function ReciperViewer(){
             </TouchableOpacity>
           </View>
         </Modal>
-        <Image style={styles.fotos} source={{uri:data.image}} />
+        <Image style={styles.fotos} source={{uri:data.urlImage}} />
         <View style={styles.infosUp}>
           <Text style={styles.title}>{data.title}</Text>
           <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
@@ -46,9 +46,10 @@ export default function ReciperViewer(){
           </View>
           <View style={styles.containermiddle}>
             <Text style={styles.subtitle}>Ingredientes</Text>
+            {console.log(data)}
             <FlatList
               data={data.ingredients}
-              renderItem={({item})=><Text style={styles.instruçoes}>{item}</Text>}
+              renderItem={({item})=>(<Text style={styles.instruçoes}>{item}</Text>)}
             />
           </View>
         </View>
